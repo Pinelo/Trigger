@@ -1,3 +1,8 @@
+package examenjframe;
+
+import java.awt.Image;
+import java.util.LinkedList;
+
 /*
 	Personaje
 	Todas las entidades que se mueven y se mueren(menos algunas excepciones)
@@ -13,6 +18,7 @@ public class Personaje extends Base {
 	private Boolean alive;			//determina si esta vivo o muerto
 	private Boolean timeLock;		//determina si sus acciones se pueden alterar por el personaje o no
 	private Boolean interrupt;		//alerta cuando se debe de interrumpir la accion del personaje
+        private Boolean isPlayer;                   //identifica a los jugadores
 	private int maxHealth;			//determina la vida maxima del personaje
 	private int curHealth;			//determina la vida actual del personaje
 	private int curSpeed;			//determina la velocidad actual del personaje
@@ -58,6 +64,9 @@ public class Personaje extends Base {
 	public Boolean getTimeLock() {
 		return timeLock;
 	}
+        public Boolean getIsPlayer() {
+                return isPlayer;
+        }
 	public int getMaxHealth() {
 		return maxHealth;
 	}
@@ -103,6 +112,9 @@ public class Personaje extends Base {
 	public void setTimeLock(Boolean timeLock) {
 		this.timeLock = timeLock;
 	}
+        public void setIsPlayer(Boolean isPlayer) {
+                this.isPlayer = isPlayer;
+        }
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
 	}
