@@ -19,6 +19,7 @@ public class Base {
     private int posX;    //posicion en x.       
     private int posY;     //posicion en y.
     private ImageIcon imiIcono;	//icono.
+    private int ObjId;        //Identifica a cada objeto
 
     /**
      * Base
@@ -29,12 +30,14 @@ public class Base {
      * @param posX es la <code>posicion en x</code> del objeto.
      * @param posY es la <code>posicion en y</code> del objeto.
      * @param imaImagen es la <code>imagen</code> del objeto.
+     * @param ObjId es la <code>Identificacion unica</code> del objeto. 
      * 
      */
-    public Base(int posX, int posY ,Image imaImagen) {
+    public Base(int posX, int posY ,Image imaImagen, int ObjId) {
         this.posX = posX;
         this.posY = posY;
         imiIcono = new ImageIcon(imaImagen);
+        this.ObjId = ObjId;
     }
 
     /**
@@ -46,12 +49,14 @@ public class Base {
      * @param posX es la <code>posicion en x</code> del objeto.
      * @param posY es la <code>posicion en y</code> del objeto.
      * @param icoImagen es la <code>imagen tipo icono</code> del objeto.
+     * @param ObjId es la <code>identificacion unica</code> del objeto.
      * 
      */
-    public Base(int posX, int posY ,ImageIcon icoImagen) {
+    public Base(int posX, int posY ,ImageIcon icoImagen, int ObjId) {
         this.posX = posX;
         this.posY = posY;
         imiIcono = icoImagen;
+        this.ObjId = ObjId;
     }
     
     /**
@@ -150,7 +155,13 @@ public class Base {
     public Image getImagen() {
         return imiIcono.getImage();
     }
-
+    
+    public void setId(int ObjId) {
+        this.ObjId = ObjId;
+    }
+    public int getObjId() {
+        return ObjId;
+    }
     /**
      * getAncho
      * 

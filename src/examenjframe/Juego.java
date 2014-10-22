@@ -45,6 +45,8 @@ public final class Juego extends JFrame implements Runnable, KeyListener{
     private Boolean bPausa;               //el juego esta pausado o no
     private Boolean worldScriptNeeded;    // determina cuando se graban los datos del mundo
     private LinkedList arrPersonajes;        //lista encadenada que contiene todos los personajes
+    private LinkedList arrIdentificaciones; //lista de identificacoin de objetos actuales
+    private int iContadorIds;               //contador de todas las identificaciones
     //para medir el tiempo
     private long startTime;               //tiempo de inicio
     
@@ -59,6 +61,10 @@ public final class Juego extends JFrame implements Runnable, KeyListener{
         //nombre de archivo donde se guarda la informacion
         nombreArchivo = "datosJuego";
         nombreArchivoWScript = "worldScript.txt";
+        
+        //inicializa el contador en 0
+        iContadorIds = 0;
+        
         // hago el applet de un tamaño 500,500
         setSize(800, 600);
         //el juego no esta pausado por defecto
@@ -68,7 +74,10 @@ public final class Juego extends JFrame implements Runnable, KeyListener{
         arrPersonajes = new LinkedList();
         
         //se crea la imagen para el personaje principal
-        URL urlImagenMC = this.getClass().getResource("GreenSwordSoldierSprite.gif");
+        URL urlImagenMC = this.getClass().getResource("GreenSwordSoldierSprite.png");
+        
+        //arreglo de todas las identificaciones
+        LinkedList arrIdentificaciones = new LinkedList();
         
         //arreglo donde se contiene el script del personaje principal
         LinkedList listScriptMC = new LinkedList();
@@ -84,9 +93,12 @@ public final class Juego extends JFrame implements Runnable, KeyListener{
         
         //se crea el personaje principal
         Personaje mainChar = new Personaje(getWidth()/2, getHeight()/2,
-                Toolkit.getDefaultToolkit().getImage(urlImagenMC), 
+                Toolkit.getDefaultToolkit().getImage(urlImagenMC), iContadorIds, 
                 true, true, false, 100, 100, 10, 100, 100, 0, 0, listScriptMC, 
                 listItemsMC, listSpellsMC,listMovesMC);
+        
+        //agrega id al arreglo
+        arrIdentificaciones.add(iContadorIds);
         
         //se agrega al personaje principal al arreglo de personajes
         arrPersonajes.add(mainChar);
@@ -116,6 +128,7 @@ public final class Juego extends JFrame implements Runnable, KeyListener{
    public void writeWorldScript() throws IOException {
                                                           
         try (PrintWriter fileOut = new PrintWriter(new FileWriter(nombreArchivoWScript))) {
+                fileOut.println(System.currentTimeMillis());
             for(Object encPersona:arrPersonajes) {
                 Personaje Persona = (Personaje)encPersona;
                 fileOut.println(Persona.getX());

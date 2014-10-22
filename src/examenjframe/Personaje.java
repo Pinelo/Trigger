@@ -31,12 +31,12 @@ public class Personaje extends Base {
 	private LinkedList listSpells;	//determina los poderes que tiene el personaje
 	private LinkedList moveList;	//determina los ataques que puede hacer el personaje
 
-	public Personaje(int posX, int posY, Image imaImage, Boolean killable, Boolean alive, Boolean timeLock, int maxHealth, int curHealth, int curSpeed, 
+	public Personaje(int posX, int posY, Image imaImage, int id,  Boolean killable, Boolean alive, Boolean timeLock, int maxHealth, int curHealth, int curSpeed, 
 						int maxMana, int curMana, int curDir, int curStrike, LinkedList listScript, LinkedList listItems, 
 						LinkedList listSpells, LinkedList moveList ) {
 
 		//Inicializa la clase de tipo base
-		super(posX, posY, imaImage);
+		super(posX, posY, imaImage, id);
 
 		//es establecen todos los valores del personaje
 		this.killable = killable;
