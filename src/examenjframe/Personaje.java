@@ -64,6 +64,9 @@ public class Personaje extends Base {
 	public Boolean getTimeLock() {
 		return timeLock;
 	}
+        public Boolean getInterrupt() {
+                return interrupt;
+        }
         public Boolean getIsPlayer() {
                 return isPlayer;
         }
@@ -112,6 +115,9 @@ public class Personaje extends Base {
 	public void setTimeLock(Boolean timeLock) {
 		this.timeLock = timeLock;
 	}
+        public void setInterrupt(Boolean interrupt) {
+                this.interrupt = interrupt;
+        }
         public void setIsPlayer(Boolean isPlayer) {
                 this.isPlayer = isPlayer;
         }
